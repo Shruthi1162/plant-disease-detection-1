@@ -34,4 +34,3 @@ if uploaded_file is not None:
 
     st.success(f"Prediction done ✅")
     st.write("Predicted class index:", predicted_class)
-
