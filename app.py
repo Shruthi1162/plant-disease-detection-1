@@ -4,17 +4,25 @@ import numpy as np
 from PIL import Image
 
 # -------------------------------
-# Page Title
+# Page config
 # -------------------------------
+st.set_page_config(page_title="Plant Disease Detection", page_icon="🌱")
+
 st.title("🌱 Plant Disease Detection")
+st.write("Upload a leaf image to detect the plant disease.")
 
 # -------------------------------
-# Load trained model
+# Load model
 # -------------------------------
-model = tf.keras.models.load_model("plant_disease_model.keras")
+@st.cache_resource
+def load_model():
+    return tf.keras.models.load_model("plant_disease_model.keras")
+
+model = load_model()
 
 # -------------------------------
-# Class names (example – adjust order if needed)
+# Class names (PlantVillage order)
+# -------------------------------
 CLASS_NAMES = [
     "Apple Scab",
     "Apple Black Rot",
@@ -55,19 +63,21 @@ CLASS_NAMES = [
     "Tomato Mosaic Virus",
     "Tomato Healthy"
 ]
+
+# -------------------------------
+# Disease descriptions
+# -------------------------------
 DISEASE_INFO = {
-    "Tomato Early Blight": "Caused by a fungus. Leads to brown spots on older leaves. Reduce moisture and use fungicide.",
-    "Tomato Late Blight": "Serious disease causing dark patches. Remove infected plants immediately.",
-    "Tomato Healthy": "The plant appears healthy with no visible disease symptoms.",
-    "Potato Early Blight": "Fungal disease causing dry brown spots on leaves.",
-    "Potato Late Blight": "Fast-spreading disease causing leaf decay.",
-    "Apple Scab": "Fungal disease causing dark spots on leaves and fruit.",
+    "Tomato Early Blight": "Fungal disease causing brown spots on older leaves. Use fungicides and avoid overhead watering.",
+    "Tomato Late Blight": "Serious disease causing dark lesions. Remove infected plants immediately.",
+    "Tomato Healthy": "The plant is healthy with no visible disease symptoms.",
+    "Potato Early Blight": "Dry brown spots caused by fungus. Ensure proper crop rotation.",
+    "Potato Late Blight": "Rapid spreading disease that can destroy crops.",
+    "Apple Scab": "Fungal disease causing dark scabs on leaves and fruit."
 }
 
-
-
-
-# Upload image
+# -------------------------------
+# File uploader
 # -------------------------------
 uploaded_file = st.file_uploader(
     "Upload a leaf image",
@@ -75,30 +85,30 @@ uploaded_file = st.file_uploader(
 )
 
 # -------------------------------
-# Prediction logic
+# Prediction
 # -------------------------------
 if uploaded_file is not None:
-    # Open and preprocess image
     image = Image.open(uploaded_file).convert("RGB")
-    image = image.resize((224, 224))
+    st.image(image, caption="Uploaded Image", use_container_width=True)
 
+    # Preprocess image
+    image = image.resize((224, 224))
     img_array = np.array(image) / 255.0
     img_array = np.expand_dims(img_array, axis=0)
 
     # Predict
     prediction = model.predict(img_array)
     predicted_index = np.argmax(prediction)
+    predicted_label = CLASS_NAMES[predicted_index]
+    confidence = np.max(prediction) * 100
 
-    # Show result
+    description = DISEASE_INFO.get(
+        predicted_label,
+        "No detailed description available for this disease."
+    )
+
+    # Output
     st.success("✅ Prediction completed!")
- predicted_label = CLASS_NAMES[predicted_index]
-description = DISEASE_INFO.get(
-    predicted_label,
-    "No detailed description available for this disease."
-)
-
-st.success("✅ Prediction completed!")
-st.subheader(f"🦠 Disease: {predicted_label}")
-st.write(description)
-
-
+    st.subheader(f"🦠 Disease: {predicted_label}")
+    st.write(description)
+    st.write(f"**Confidence:** {confidence:.2f}%")
