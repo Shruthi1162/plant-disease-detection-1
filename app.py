@@ -16,6 +16,8 @@ st.set_page_config(
 # Title & description
 # ---------------------------
 st.title("🌱 Plant Disease Detection")
+st.info("🌿 This model is trained only for **Tomato plant leaves**. Uploading other plant leaves may give incorrect results.")
+
 st.write(
     "Upload a leaf image to detect whether it is healthy or affected by a plant disease. "
     "This model is trained on the PlantVillage dataset."
