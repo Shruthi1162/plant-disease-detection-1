@@ -58,6 +58,64 @@ body {
 }
 </style>
 """, unsafe_allow_html=True)
+st.markdown("""
+<style>
+/* Soft pastel green background */
+body {
+    background: linear-gradient(
+        135deg,
+        #f0fff7 0%,
+        #f7fffb 50%,
+        #ffffff 100%
+    );
+}
+
+/* Main title */
+.main-title {
+    text-align: center;
+    font-size: 42px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: #14532d;
+}
+
+/* Subtitle */
+.subtitle {
+    text-align: center;
+    color: #6b7280;
+    font-size: 16px;
+    margin-bottom: 32px;
+}
+
+/* Upload section */
+.upload-box {
+    border-radius: 18px;
+    padding: 22px;
+    background-color: #ffffff;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+    margin-bottom: 24px;
+}
+
+/* Result card */
+.result-card {
+    background-color: #ffffff;
+    padding: 26px;
+    border-radius: 18px;
+    box-shadow: 0 14px 35px rgba(0, 0, 0, 0.08);
+    margin-top: 28px;
+    border-left: 6px solid #22c55e;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    color: #6b7280;
+    font-size: 14px;
+    margin-top: 42px;
+}
+</style>
+""", unsafe_allow_html=True)
+
 
 # ---------------------------
 # Title & description
