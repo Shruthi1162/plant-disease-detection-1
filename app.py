@@ -75,8 +75,56 @@ CLASS_NAMES = [
 ]
 
 DISEASE_INFO = {
-    "Tomato Early Blight": "Fungal disease causing brown spots on older leaves. Use fungicides and avoid overhead watering.",
-    "Tomato Healthy": "The leaf appears healthy with no visible disease symptoms.",
+    # 🍅 Tomato
+    "Tomato Early Blight": "Fungal disease causing brown spots on older leaves with concentric rings. Control using fungicides and proper crop rotation.",
+    "Tomato Late Blight": "Serious fungal disease causing dark, water-soaked lesions. Avoid overhead watering and use resistant varieties.",
+    "Tomato Leaf Mold": "Causes yellow spots on upper leaf surface and mold growth underneath. Improve air circulation and reduce humidity.",
+    "Tomato Septoria Leaf Spot": "Small circular spots with dark borders. Remove infected leaves and apply fungicides.",
+    "Tomato Spider Mites": "Tiny pests causing yellowing and webbing on leaves. Control using miticides or neem oil.",
+    "Tomato Yellow Leaf Curl Virus": "Viral disease causing leaf curling and stunted growth. Spread by whiteflies; remove infected plants.",
+    "Tomato Mosaic Virus": "Causes mottled leaf patterns and distorted growth. Spread through contact; disinfect tools.",
+    "Tomato Healthy": "The leaf appears healthy with normal green color and no visible disease symptoms.",
+
+    # 🥔 Potato
+    "Potato Early Blight": "Fungal disease causing dark brown spots on leaves. Use crop rotation and fungicides.",
+    "Potato Late Blight": "Highly destructive disease causing rapid leaf decay. Avoid wet conditions and use resistant varieties.",
+    "Potato Healthy": "Healthy potato leaf with no signs of infection or damage.",
+
+    # 🍎 Apple
+    "Apple Scab": "Fungal disease causing dark scabby lesions on leaves and fruit. Prune affected areas and apply fungicides.",
+    "Apple Black Rot": "Causes circular brown lesions on leaves and fruit rot. Remove infected branches and improve airflow.",
+    "Apple Cedar Rust": "Orange-yellow spots on leaves caused by fungal infection. Remove nearby cedar trees if possible.",
+    "Apple Healthy": "Apple leaf appears healthy with smooth surface and uniform green color.",
+
+    # 🌽 Corn
+    "Corn Gray Leaf Spot": "Fungal disease causing rectangular gray lesions. Practice crop rotation and residue management.",
+    "Corn Common Rust": "Reddish-brown pustules on leaves. Usually mild but can reduce yield.",
+    "Corn Northern Leaf Blight": "Long gray-green lesions that reduce photosynthesis. Use resistant hybrids.",
+    "Corn Healthy": "Corn leaf shows healthy green color and intact structure.",
+
+    # 🍇 Grape
+    "Grape Black Rot": "Brown spots with black margins on leaves. Apply fungicides and remove infected debris.",
+    "Grape Esca": "Chronic disease causing tiger-striped leaves. Improve vineyard sanitation.",
+    "Grape Leaf Blight": "Leaf browning and premature leaf drop. Maintain proper irrigation.",
+    "Grape Healthy": "Grape leaf is green and free from spots or discoloration.",
+
+    # 🍓 Strawberry
+    "Strawberry Leaf Scorch": "Dark purple spots on leaves that merge. Remove infected leaves and avoid overhead watering.",
+    "Strawberry Healthy": "Strawberry leaf appears healthy with no signs of scorch or spots.",
+
+    # 🌶 Pepper
+    "Pepper Bell Bacterial Spot": "Water-soaked lesions turning brown. Use certified seeds and avoid wet foliage.",
+    "Pepper Bell Healthy": "Pepper leaf is green and healthy with no lesions.",
+
+    # 🫐 Blueberry
+    "Blueberry Healthy": "Blueberry leaf appears healthy with uniform color and no disease symptoms.",
+
+    # 🌱 General
+    "Soybean Healthy": "Soybean leaf shows normal color and growth with no visible disease.",
+    "Raspberry Healthy": "Healthy raspberry leaf with no discoloration or spotting.",
+    "Squash Powdery Mildew": "White powdery fungal growth on leaves. Improve air circulation and apply fungicides."
+}
+
 }
 
 # ---------------------------
