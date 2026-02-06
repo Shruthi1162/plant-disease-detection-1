@@ -129,7 +129,10 @@ if uploaded_file is not None:
     predictions = model.predict(img_array)
     confidence = float(np.max(predictions)) * 100
     predicted_index = int(np.argmax(predictions))
+   if predicted_index < len(CLASS_NAMES):
     predicted_label = CLASS_NAMES[predicted_index]
+else:
+    predicted_label = "Unknown / Non-Tomato Leaf"
 
     st.success("Prediction completed!")
 
