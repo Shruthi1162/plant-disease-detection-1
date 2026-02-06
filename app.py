@@ -125,7 +125,6 @@ DISEASE_INFO = {
     "Squash Powdery Mildew": "White powdery fungal growth on leaves. Improve air circulation and apply fungicides."
 }
 
-}
 
 # ---------------------------
 # File uploader
