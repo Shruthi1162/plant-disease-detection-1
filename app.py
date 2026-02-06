@@ -104,7 +104,7 @@ if uploaded_file is not None:
     # ---------------------------
     prediction = model.predict(img_array)
     predicted_index = np.argmax(prediction)
-    confidence = float(np.max(prediction)) * 100
+    
 
     predicted_label = CLASS_NAMES[predicted_index]
 
@@ -121,10 +121,4 @@ if uploaded_file is not None:
     )
     st.write(description)
 
-    st.write(f"**Confidence:** {confidence:.2f}%")
-
-    # ---------------------------
-    # Low confidence warning
-    # ---------------------------
-    if confidence < 70:
-        st.warning("⚠️ Low confidence prediction. Image may be healthy or unclear.")
+   
