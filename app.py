@@ -100,8 +100,7 @@ if uploaded_file is not None:
 
     prediction = model.predict(img_array)
     predicted_index = int(np.argmax(prediction))
-    confidence = float(np.max(prediction) * 100)
-
+    
     # Safe label handling
     if predicted_index < len(CLASS_NAMES):
         predicted_label = CLASS_NAMES[predicted_index]
@@ -121,15 +120,13 @@ if uploaded_file is not None:
 
     st.markdown(f"### 🌿 Disease: **{predicted_label}**")
     st.write(description)
-    st.write(f"**Confidence:** {confidence:.2f}%")
+    
 
     # Warnings
     if plant_choice != "Tomato (Supported)":
         st.warning("⚠️ Model is trained only on tomato leaves. Result may be incorrect.")
 
-    if confidence < 40:
-        st.warning("⚠️ Low confidence prediction. Image may be healthy or unclear.")
-
+   
     st.markdown("</div>", unsafe_allow_html=True)
 
 # ----------------------------
