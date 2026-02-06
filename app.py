@@ -13,12 +13,60 @@ st.set_page_config(
 )
 
 # ---------------------------
+# CSS (ONLY UI – NO LOGIC CHANGES)
+# ---------------------------
+st.markdown("""
+<style>
+body {
+    background-color: #f3fff8;
+}
+
+.main-title {
+    text-align: center;
+    font-size: 42px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #6b7280;
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
+.upload-box {
+    border-radius: 16px;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+}
+
+.result-card {
+    background-color: #ffffff;
+    padding: 24px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    margin-top: 25px;
+}
+
+.footer {
+    text-align: center;
+    color: #6b7280;
+    font-size: 14px;
+    margin-top: 40px;
+}
+</style>
+""", unsafe_allow_html=True)
+
+# ---------------------------
 # Title & description
 # ---------------------------
-st.title("🌱 Plant Disease Detection")
-st.write(
-    "Upload a leaf image to detect whether it is healthy or affected by a plant disease. "
-    "This model is trained on the PlantVillage dataset."
+st.markdown("<div class='main-title'>🌱 Plant Disease Detection</div>", unsafe_allow_html=True)
+st.markdown(
+    "<div class='subtitle'>Upload a leaf image to detect whether it is healthy or affected by a plant disease. "
+    "This model is trained on the PlantVillage dataset.</div>",
+    unsafe_allow_html=True
 )
 
 # ---------------------------
@@ -82,10 +130,14 @@ DISEASE_INFO = {
 # ---------------------------
 # File uploader
 # ---------------------------
+st.markdown("<div class='upload-box'>", unsafe_allow_html=True)
+
 uploaded_file = st.file_uploader(
     "Upload a leaf image",
     type=["jpg", "jpeg", "png"]
 )
+
+st.markdown("</div>", unsafe_allow_html=True)
 
 if uploaded_file is not None:
     # Show image
@@ -104,8 +156,6 @@ if uploaded_file is not None:
     # ---------------------------
     prediction = model.predict(img_array)
     predicted_index = np.argmax(prediction)
-    
-
     predicted_label = CLASS_NAMES[predicted_index]
 
     st.success("✅ Prediction completed!")
@@ -113,6 +163,8 @@ if uploaded_file is not None:
     # ---------------------------
     # Display result
     # ---------------------------
+    st.markdown("<div class='result-card'>", unsafe_allow_html=True)
+
     st.subheader(f"🌿 Disease: {predicted_label}")
 
     description = DISEASE_INFO.get(
@@ -121,4 +173,12 @@ if uploaded_file is not None:
     )
     st.write(description)
 
-   
+    st.markdown("</div>", unsafe_allow_html=True)
+
+# ---------------------------
+# Footer
+# ---------------------------
+st.markdown(
+    "<div class='footer'>🚀 Built with TensorFlow + Streamlit</div>",
+    unsafe_allow_html=True
+)
