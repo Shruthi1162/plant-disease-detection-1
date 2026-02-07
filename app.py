@@ -7,8 +7,8 @@ from PIL import Image
 # Page config
 # ---------------------------
 st.set_page_config(
-    page_title="Tomato Leaf Disease Detection",
-    page_icon="🍅",
+    page_title="Plant Leaf Disease Detection",
+    page_icon="🌱",
     layout="centered"
 )
 
