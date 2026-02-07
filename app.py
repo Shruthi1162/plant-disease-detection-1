@@ -13,7 +13,7 @@ st.set_page_config(
 )
 
 # ---------------------------
-# Custom CSS (ONLY LOOK, NO LOGIC)
+# CSS (ONLY UI)
 # ---------------------------
 st.markdown("""
 <style>
@@ -51,8 +51,7 @@ st.markdown("""
 # Title
 # ---------------------------
 st.markdown("<div class='main-title'>🍅 Tomato Leaf Disease Detection</div>", unsafe_allow_html=True)
-
-st.caption("Upload a tomato leaf image to detect the disease.")
+st.caption("Upload a tomato leaf image to detect disease.")
 
 # ---------------------------
 # Load model
@@ -64,9 +63,37 @@ def load_model():
 model = load_model()
 
 # ---------------------------
-# Tomato class names
+# FULL classes (how model was trained)
 # ---------------------------
 CLASS_NAMES = [
+    "Apple Scab",
+    "Apple Black Rot",
+    "Apple Cedar Rust",
+    "Apple Healthy",
+    "Blueberry Healthy",
+    "Cherry Powdery Mildew",
+    "Cherry Healthy",
+    "Corn Gray Leaf Spot",
+    "Corn Common Rust",
+    "Corn Northern Leaf Blight",
+    "Corn Healthy",
+    "Grape Black Rot",
+    "Grape Esca",
+    "Grape Leaf Blight",
+    "Grape Healthy",
+    "Orange Haunglongbing",
+    "Peach Bacterial Spot",
+    "Peach Healthy",
+    "Pepper Bell Bacterial Spot",
+    "Pepper Bell Healthy",
+    "Potato Early Blight",
+    "Potato Late Blight",
+    "Potato Healthy",
+    "Raspberry Healthy",
+    "Soybean Healthy",
+    "Squash Powdery Mildew",
+    "Strawberry Leaf Scorch",
+    "Strawberry Healthy",
     "Tomato Bacterial Spot",
     "Tomato Early Blight",
     "Tomato Late Blight",
@@ -80,10 +107,10 @@ CLASS_NAMES = [
 ]
 
 # ---------------------------
-# File uploader
+# Upload
 # ---------------------------
 uploaded_file = st.file_uploader(
-    "Upload a tomato leaf image",
+    "Upload leaf image",
     type=["jpg", "jpeg", "png"]
 )
 
@@ -103,15 +130,19 @@ if uploaded_file is not None:
     prediction = model.predict(img_array)
     predicted_index = int(np.argmax(prediction))
 
-    # Safe check
-    if predicted_index < len(CLASS_NAMES):
-        predicted_label = CLASS_NAMES[predicted_index]
-    else:
-        predicted_label = "Unknown Tomato Condition"
+    predicted_label = CLASS_NAMES[predicted_index]
+
+    # ---------------------------
+    # Tomato filter
+    # ---------------------------
+    if not predicted_label.lower().startswith("tomato"):
+        predicted_label = "Not a Tomato Leaf"
 
     st.success("✅ Prediction completed!")
 
-    # Result
+    # ---------------------------
+    # Result display
+    # ---------------------------
     st.markdown("<div class='result-card'>", unsafe_allow_html=True)
     st.subheader(f"🌿 Disease: {predicted_label}")
     st.markdown("</div>", unsafe_allow_html=True)
@@ -123,4 +154,3 @@ st.markdown(
     "<div class='footer'>🚀 Tomato Leaf Disease Detection | Streamlit</div>",
     unsafe_allow_html=True
 )
-
