@@ -50,7 +50,7 @@ st.markdown("""
 # ---------------------------
 # Title
 # ---------------------------
-st.markdown("<div class='main-title'>🌱 Plan Leaf Disease Detection</div>", unsafe_allow_html=True)
+st.markdown("<div class='main-title'>🌱 Plant Leaf Disease Detection</div>", unsafe_allow_html=True)
 st.caption("Upload a tomato leaf image to detect disease.")
 
 # ---------------------------
